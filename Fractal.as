@@ -41,7 +41,7 @@
 					}
 					else
 					{
-						color = cycles << 16 | ( cycles + 50 ) << 8 | cycles;
+						color = cycles << 12 | ( cycles + 128 ) << 8 | cycles << 4;
 					}
 					bitmapData.setPixel( px , py , color );
 				}
