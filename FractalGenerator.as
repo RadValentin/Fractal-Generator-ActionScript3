@@ -22,8 +22,7 @@
 		public function FractalGenerator()
 		{
 			//initialize correct fractal type
-			var fractalType:String = root.loaderInfo.parameters.type as String;
-			
+			var fractalType:String = root.loaderInfo.parameters.ftype as String;			
 			switch(fractalType){
 				case 'BurningShip': mandelbrot = new BurningShip(); break;
 				case 'Chaosbrot': mandelbrot = new Chaosbrot(); break;
