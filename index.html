@@ -1,20 +1,54 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+﻿<!DOCTYPE html>
+<html>
 	<head>
-		<title>FractalGenerator</title>
+		<title>Fractal Generator ActionScript 3</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
 		<style type="text/css" media="screen">
-		html, body { height:100%; background-color: #003333;}
-		body { margin:0; padding:0; overflow:hidden; }
-		#flashContent { width:100%; height:100%; }
+		html, body {
+			background-color: #c4b4a6;
+			color: #fff;
+		}
+		body {
+			margin:0;
+			padding:0;
+		}
+		#flashContent {
+			width:800px;
+			height: 700px;
+			margin: 20px auto;
+		}
+		#controlBox{
+			text-align: center;
+		}
+		#controlBox li{
+			display: inline-block;
+		}
+		#controlBox li a{
+			display: block;
+			background-color: #ff6400;
+			background-image: none;
+			margin: 10px;
+			padding: 18px 31px;
+			color: #fff;
+			font-size: 16px;
+			font-weight: 700;
+			font-family: 'Open Sans';
+			text-transform: uppercase;
+			text-decoration: none;
+		}
+		#controlBox li a:hover, #controlBox li a.active{
+			background-color: #ff8400;
+		}
 		</style>
 	</head>
 	<body>
+		<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 		<div id="flashContent">
 			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="800" height="700" id="FractalGenerator" align="middle">
-				<param name="movie" value="FractalGenerator.swf" />
+				<param name="movie" value="FractalGenerator.swf?" />
 				<param name="quality" value="high" />
-				<param name="bgcolor" value="#003333" />
+				<param name="bgcolor" value="#fff" />
 				<param name="play" value="true" />
 				<param name="loop" value="true" />
 				<param name="wmode" value="window" />
@@ -23,11 +57,12 @@
 				<param name="devicefont" value="false" />
 				<param name="salign" value="" />
 				<param name="allowScriptAccess" value="sameDomain" />
+				<param name="FlashVars" value="ftype=Mandelbrot" />
 				<!--[if !IE]>-->
 				<object type="application/x-shockwave-flash" data="FractalGenerator.swf" width="800" height="700">
 					<param name="movie" value="FractalGenerator.swf" />
 					<param name="quality" value="high" />
-					<param name="bgcolor" value="#003333" />
+					<param name="bgcolor" value="#fff" />
 					<param name="play" value="true" />
 					<param name="loop" value="true" />
 					<param name="wmode" value="window" />
@@ -36,6 +71,7 @@
 					<param name="devicefont" value="false" />
 					<param name="salign" value="" />
 					<param name="allowScriptAccess" value="sameDomain" />
+					<param name="FlashVars" value="ftype=Mandelbrot" />
 				<!--<![endif]-->
 					<a href="http://www.adobe.com/go/getflash">
 						<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
@@ -45,5 +81,28 @@
 				<!--<![endif]-->
 			</object>
 		</div>
+		<ul id="controlBox">
+			<li><a href="#" class="active" data-fractal="Mandelbrot">Mandelbrot</a></li>
+			<li><a href="#" data-fractal="BurningShip">Burning Ship</a></li>
+			<li><a href="#" data-fractal="Chaosbrot">Chaosbrot</a></li>
+		</ul>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#controlBox').on('click', 'a', function(event){
+					event.preventDefault();
+					if(!$(this).hasClass('active')){
+						var fractalName = $(this).data('fractal');
+						$(this).closest("#controlBox").find('a').removeClass('active');
+						$(this).addClass('active');						
+						$('#flashContent').find('param[name="FlashVars"]').val("ftype="+fractalName); 
+						$('#flashContent > object').hide();
+						setTimeout(function(){
+							$('#flashContent > object').show();
+						}, 100)
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
