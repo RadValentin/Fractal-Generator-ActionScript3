@@ -2,7 +2,14 @@
 _A simple fractal generator I made using AS3 (college project)_
 <br/>
 
-**Live version here [http://devsnacks.com/git/fractals/](http://devsnacks.com/git/fractals/)**
+**Live version [here](http://radvalentin.github.io/Fractal-Generator-ActionScript3/)**
+
+###Instructions
+
+1. Click anywhere on the farctal image to zoom in
+2. Use the right bar to set different drawing parameters and press **Draw** to render the fractal
+3. Use the 3 bottom buttons to switch between fractal types
+4. Ignore the **Zoom** button
 
 ###Notes
 
