@@ -13,6 +13,7 @@ _A simple fractal generator I made using AS3 (college project)_
 
 ###Notes
 
+- Fractal switching won't work in IE
 - Code is uncommented, comments comming soon! 
 - Performance won't be lightning fast due to the way in which fractals are generated. If you know of any way to speed up the calculations or reduce the number of cycles without loosing image details, please let me know. 
 
